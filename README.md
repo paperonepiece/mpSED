@@ -1,7 +1,7 @@
 # mpSED
-Modified Phonon Spectral Energy Density Calculation&Processing Module (Zheyi Zhang, zhangzy3033@163.com)
+Modified Phonon Spectral Energy Density Calculation&Processing Module
 
-Original SED code is from https://github.com/tyst3273/phonon-sed, Ty Sterling. I made a few modifications on it to improve its performance
+Original SED code is from https://github.com/tyst3273/phonon-sed, Ty Sterling. I made a few modifications on it to improve its performance (Zheyi Zhang, zhangzy3033@163.com)
 
 **New Features:**
 
