@@ -56,15 +56,15 @@ ALL DONE! Hope it helps your work and enjoy your SED analyzation ~
 
 **Next version demand:**
 
-    1. Eigenvector SED method
+    1. Partial SED from atom types or groups
 
-    2. Correlation with group_velocity to generate frequency-resolved phonon thermal conductivity
+    2. Solution to deal with randomly-defect & non-periodic & non-uniform-deformation structure
     
-    3. Built_in Dynamic Structure Factor method
+    3. Correlation with group_velocity to generate frequency-resolved phonon thermal conductivity
     
-    4. Partial SED from atom types or groups
+    4. Eigenvector SED method
 
-    5. Solution to deal with randomly-defect & non-periodic & non-uniform-deformation structure
+    5. Built_in Dynamic Structure Factor method
 
 Still a long&hard way to go
 
