@@ -9,13 +9,13 @@ Original SED code is from https://github.com/tyst3273/phonon-sed, Ty Sterling. I
 
     2. SED calculation Speed x20
 
-    3. Allow more steps(data frames) per split than NUM_STEPS/NUM_SPLITS to get finer average
+    3. Auto-detecting available q-points on q-path from the dimension of unit-cell replication
 
-    4. Auto-detecting available q-points on q-path from the dimension of unit-cell replication
+    4. Allow more steps(data frames) per split than NUM_STEPS/NUM_SPLITS to get finer average 
 
-    5. Automatic mode for Lorentz fitting, i.e., the generation of phonon lifetime
+    5. Assign number of cores used for fft calculation to speed up SED further (slightly)
    
-    6. Assign number of cores used for fft calculation to speed up SED further (slightly)
+    6. Automatic mode for Lorentz fitting, i.e., the generation of phonon lifetime
 
 The other settings and functions almost remains the same to Styling's original version
 
