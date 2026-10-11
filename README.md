@@ -1,2 +1,2 @@
 # mpSED
-Modified Phonon Spectral Energy Density calculation module
+Modified Phonon Spectral Energy Density Calculation&Processing Module
