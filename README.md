@@ -3,7 +3,7 @@ Modified Phonon Spectral Energy Density Calculation&Processing Module
 
 Original SED code is from https://github.com/tyst3273/phonon-sed, Ty Sterling. I made a few modifications on it to improve its performance
 
-**New Features**
+**New Features:**
 
   1. Compression Speed x3
 
@@ -16,10 +16,12 @@ Original SED code is from https://github.com/tyst3273/phonon-sed, Ty Sterling. I
   5. Automatic mode for Lorentz fitting, i.e., the generation of phonon lifetime
 
   6. Assign number of cores used for fft calculation to speed up SED further (slightly)
+  7. 
 
 The other settings and functions almost remains the same to styling's original version
 
-**Usage Instruction**
+
+**Usage Instruction:**
 
   1. Copy the modules/mpSED/psed.in/replicate_unitcell.py/in_vels.lmp to your desired work directory
 
@@ -35,5 +37,6 @@ The other settings and functions almost remains the same to styling's original v
       python mpSED
 
   6. Reset the plot and lorentz args and run again to do postprocessing, e.g., phonon-band plotting or lifetime fitting
+  7. 
 
 ALL DONE! Hope it helps your work and enjoy your SED analyzation ~
