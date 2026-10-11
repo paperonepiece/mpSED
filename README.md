@@ -17,7 +17,7 @@ Original SED code is from https://github.com/tyst3273/phonon-sed, Ty Sterling. I
    
     6. Automatic mode of Lorentz fitting, i.e., the generation of phonon lifetime
 
-The other settings and functions almost remains the same to Sterling's original version
+The other settings and functions remains nearly the same to Sterling's original version
 
 **Dependence:**
 
