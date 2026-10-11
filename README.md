@@ -50,3 +50,18 @@ The other settings and functions almost remains the same to Sterling's original 
 
 
 ALL DONE! Hope it helps your work and enjoy your SED analyzation ~
+
+**Next version demand:**
+
+    1. Eigenvector SED method
+
+    2. Correlation with group_velocity to generate frequency-resolved phonon thermal conductivity
+    
+    3. Built_in Dynamic Structure Factor method
+    
+    4. Partial SED from atom types or groups
+
+    5. Solution to deal with randomly-defect & non-periodic & non-uniform-deformation structure
+
+Still a long&hard way to go
+
