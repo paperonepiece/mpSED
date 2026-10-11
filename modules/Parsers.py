@@ -11,7 +11,6 @@ def print_error(txt):
 
 class parse_input:
     def __init__(self,input_file):
-        
         ### defaults
         self.compress = False
         self.debug = False
