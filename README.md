@@ -13,9 +13,9 @@ Original SED code is from https://github.com/tyst3273/phonon-sed, Ty Sterling. I
 
     4. Allow more steps(data frames) per split than NUM_STEPS/NUM_SPLITS to get finer average 
 
-    5. Assign number of cores used for fft calculation to speed up SED further (slightly)
+    5. Assign cpu cores used for fft calculation to speed up SED further (slightly)
    
-    6. Automatic mode for Lorentz fitting, i.e., the generation of phonon lifetime
+    6. Automatic mode of Lorentz fitting, i.e., the generation of phonon lifetime
 
 The other settings and functions almost remains the same to Styling's original version
 
