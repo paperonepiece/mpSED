@@ -19,34 +19,34 @@ Original SED code is from https://github.com/tyst3273/phonon-sed, Ty Sterling. I
 
 The other settings and functions almost remains the same to Styling's original version
 
-**Need:**
+**Dependence:**
 
     1. python
   
-    2. numpy
+    2. numpy (py package)
   
-    3. scipy
+    3. scipy (py package)
     
-    4. hdf5
+    4. hdf5 (py package)
     
-    5. matplotlib
+    5. matplotlib (py package)
 
 **Usage Instruction:**
 
-  1. Copy the modules/mpSED/psed.in/replicate_unitcell.py/in_vels.lmp to your desired work directory
+    1. Copy the modules/mpSED/psed.in/replicate_unitcell.py/in_vels.lmp to your desired work directory
 
-  2. Prepare your unitcell(lammps-format) and generate supercell structure using 'replicate_unitcell.py':
+    2. Prepare your unitcell(lammps-format) and generate supercell structure using 'replicate_unitcell.py':
 
-      python replicate_unitcell.py
+        python replicate_unitcell.py
 
-  3. Run lammps-MD simulation with 'in_vels.lmp' in your familiar way
+    3. Run lammps-MD simulation with 'in_vels.lmp' in your familiar way
 
-  4. Modify parameters in 'psed.in' according to your lammps-MD
+    4. Modify parameters in 'psed.in' according to your lammps-MD
   
-  5. Run 'mpSED' to do SED calculation (Set the plot and lorentz args as 0):
-      python mpSED
+    5. Run 'mpSED' to do SED calculation (Set the plot and lorentz args as 0):
+        python mpSED
 
-  6. Reset the plot and lorentz args and run again to do postprocessing, e.g., phonon-band plotting or lifetime fitting
+    6. Reset the plot and lorentz args and run again to do postprocessing, e.g., phonon-band plotting or lifetime fitting
 
 
 ALL DONE! Hope it helps your work and enjoy your SED analyzation ~
