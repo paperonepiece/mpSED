@@ -5,31 +5,31 @@ Original SED code is from https://github.com/tyst3273/phonon-sed, Ty Sterling. I
 
 **New Features:**
 
-  1. Compression Speed x3
+    1. Compression Speed x3
 
-  2. SED calculation Speed x20
+    2. SED calculation Speed x20
 
-  3. Allow more steps(data frames) per split than NUM_STEPS/NUM_SPLITS to get finer average
+    3. Allow more steps(data frames) per split than NUM_STEPS/NUM_SPLITS to get finer average
 
-  4. Auto-detecting available q-points on q-path from the dimension of unit-cell replication
+    4. Auto-detecting available q-points on q-path from the dimension of unit-cell replication
 
-  5. Automatic mode for Lorentz fitting, i.e., the generation of phonon lifetime
-
-  6. Assign number of cores used for fft calculation to speed up SED further (slightly)
+    5. Automatic mode for Lorentz fitting, i.e., the generation of phonon lifetime
+   
+    6. Assign number of cores used for fft calculation to speed up SED further (slightly)
 
 The other settings and functions almost remains the same to Styling's original version
 
 **Need:**
 
-  1. python
+    1. python
   
-  3. numpy
+    2. numpy
   
-  5. scipy
+    3. scipy
     
-  7. hdf5
+    4. hdf5
     
-  9. matplotlib
+    5. matplotlib
 
 **Usage Instruction:**
 
