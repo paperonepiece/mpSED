@@ -2,13 +2,13 @@
 '''
 This code is used to generate supercell for the given structure:
 
-python3 cellexp.py -i filename -d '2 2 2'
-python3 cellexp.py -i /base/path/path1/filename -d '2 2 2'
-python3 cellexp.py -i POSCAR -d '2 2 2' -c lammps -s -m
-python3 cellexp.py -i POSCAR -c lammps -o model.txt
+python3 replicate_unitcell.py -i filename -d '2 2 2'
+python3 replicate_unitcell.py -i /base/path/path1/filename -d '2 2 2'
+python3 replicate_unitcell.py -i POSCAR -d '2 2 2' -c lammps -s -m
+python3 replicate_unitcell.py -i POSCAR -c lammps -o model.txt
 
 Only support lammps/vasp-type of structure for now
-@ Author: Zheyi Zhang(DUT, China)
+@ Author: Zheyi Zhang (China)
 @ Email : zhangzy3033@163.com
 '''
 import os
