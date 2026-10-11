@@ -29,7 +29,7 @@ The other settings and functions remains nearly the same to Sterling's original 
   
     4. scipy (py package)
     
-    5. hdf5 (py package)
+    5. h5py (py package)
     
     6. matplotlib (py package)
 
