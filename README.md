@@ -25,13 +25,13 @@ The other settings and functions remains nearly the same to Sterling's original 
     
     2. python (no need to link with lammps)
   
-    2. numpy (py package)
+    3. numpy (py package)
   
-    3. scipy (py package)
+    4. scipy (py package)
     
-    4. hdf5 (py package)
+    5. hdf5 (py package)
     
-    5. matplotlib (py package)
+    6. matplotlib (py package)
 
 **Usage Instruction:**
 
