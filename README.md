@@ -19,6 +19,17 @@ Original SED code is from https://github.com/tyst3273/phonon-sed, Ty Sterling. I
 
 The other settings and functions almost remains the same to Styling's original version
 
+**Need:**
+
+  1. python
+  
+  3. numpy
+  
+  5. scipy
+    
+  7. hdf5
+    
+  9. matplotlib
 
 **Usage Instruction:**
 
