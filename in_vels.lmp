@@ -1,0 +1,71 @@
+# This is used to get atoms positions and velocities for SED calculation
+# Author: Zheyi Zhang
+
+ # system        bulk
+ units           metal
+ atom_style      atomic
+ dimension       3
+ boundary        p p p
+ processors      * * *
+
+ read_data	./diamond-exp-con_4450.txt
+ pair_style      tersoff
+ pair_coeff      * * SiC.tersoff  C
+ pair_modify     shift yes
+
+ neighbor        0.5   bin
+ neigh_modify    every 1 delay 0 check yes
+
+ timestep        0.001		
+ variable        Tem     equal  300
+ variable        Pre     equal  1.0
+ variable        T_equ   equal  1e5       # equilibrating in ensembles
+ variable	 dt_dump equal  10        # 2**4
+ variable	 steps   equal  2e5 # 2**19
+
+ compute         Mytemp all  temp
+ thermo_style    custom  step temp ke pe etotal press lx ly lz vol
+ thermo_modify   flush   yes  temp  Mytemp  lost  warn
+ thermo          1000
+
+ #min_style       cg#hftn#fire#quickmin
+ #fix             min_pre  all  box/relax iso ${Pre} vmax 0.001 # enable for constant pressure during min
+ #minimize        1e-10 1e-10 1000 1000
+ #minimize        1e-10 1e-10 1000 1000
+ #unfix           min_pre
+ #reset_timestep  0
+
+ restart         10000  tmp.restart1 tmp.restart2
+ velocity        all create ${Tem} 7123456 mom yes rot yes dist gaussian
+ dump            config all custom 100000 wp.config.* id type x y z 
+ dump_modify     config format line "%d %d %.8g %.8g %.8g"
+ dump_modify     config sort id
+ fix             NPT all npt temp ${Tem} ${Tem} $(dt*100) aniso ${Pre} ${Pre} $(dt*1000)
+ run        	 ${T_equ}
+ unfix           NPT
+
+ fix             NVT all nvt temp ${Tem} ${Tem} $(dt*100) tchain 10
+ run        	 ${T_equ}
+ unfix           NVT
+
+ fix             NVE all nve
+ run        	 ${T_equ}
+ unfix           NVE
+ undump          config
+ write_data      data_oped.dat
+ reset_timestep  0
+ restart    0
+
+ restart         1000  tmp1.restart1 tmp1.restart2
+ dump            config all custom 100000 wp1.config.* id type x y z 
+ dump_modify     config format line "%d %d %.8g %.8g %.8g"
+ dump_modify     config sort id
+
+ dump            vels all custom ${dt_dump} pos_vels.dat id type x y z vx vy vz
+ dump_modify     vels format line "%d %d %.8g %.8g %.8g %.8g %.8g %.8g"
+ dump_modify     vels sort id
+
+ fix             NVE all nve
+ run             ${steps} 			
+ unfix           NVE
+ restart    0

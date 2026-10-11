@@ -1,0 +1,50 @@
+## Control file for Phonon SED calculation and Post-processing
+## Data compression Options ...
+DEBUG      = 0 # this will only average one block. Keep as 0 for production
+COMPRESS   = 0 # this will compress the velocity file and calculate SED. Set to 1 to compress only.
+NUM_CORES  = 1 # mpi cores for accelerating the fft computation, 1 is okay
+
+## Read previous calculation for plotting, look for outputs and plot them, then exit.
+PLOT_BANDS    = 0 # plot the dispersion
+PLOT_SLICE    = 0 # plot a q-slice
+Q_SLICE_INDEX = 0 # the q-point to plot (starts from 0 or using range(n) as python)
+FREQ_CUTOFF   = 0 # plot the dispersion on 0.0-xx THz (0 for the whole domain)
+
+## Do Lorentz fitting
+LORENTZ      = 0  # whether to fit peaks
+FIT_MODE     = auto # if set 'manual', set up 2 lines below for single q-point fitting, or using 'auto'
+NUM_GUESSES  = 4  # Number of guesses for peak centers
+PEAK_GUESSES = 7 12 15 16 # Index of peak center from 'plot_slice' plot. Enter as many as there are NUM_GUESSES
+
+## Molecular dynamics simulation
+NUM_ATOMS = 6400     # number of atoms in structure
+NUM_STEPS = 2e5  # MD simulation steps
+TIME_STEP = 1.0     # femtoseconds
+MD_UNITS  = metal   # metal or real
+# IF_DSF = 0  # if 1, perform dsf calculation, not finished
+
+## Divide up the data for averaging
+STRIDE     = 10 # data only printed every 32 steps in the LAMMPS simulation, see the input file.
+NUM_SPLITS = 4  # number of blocks to average. If DEBUG = 1, this is overridden as 1.
+STEPS_PER_SPLITS = 1e5 # MD steps in each split, allows more than NUM_STEPS/NUM_SPLITS
+
+## Crystal lattice
+LAT_PARAMS = 3.567 3.567 3.567  # crystal lattice constants. 
+PRIM_VECS  = 1.0 0.0 0.0  0.0 1.0 0.0  0.0 0.0 1.0 # primitive lattice vectors.
+SUPERCELL_DIM = 4 4 50
+
+## Q-points
+NUM_QPATHS  = 1  # number of dispersion paths to include
+NUM_QPOINTS = 25  # number of q-points in the disperion paths
+QSYM_POINTS = 0.0 0.0 0.0  0.0 0.0 0.5  # 0.5 0.5 0.0 # end points of the dispersion path in red. reciprocal coords.
+
+## Input and output files 
+OUT_PREFIX    = Diamond_4450
+LATTICE_FILE  = lattice.dat
+POS_VELS_FILE = pos_vels.dat 
+FILE_FORMAT   = lammps # only support 'lammps' for now!
+
+### Eigenvectors, currently manually disabled inside the code... it is incorrect
+# WITH_EIGS    = 0 
+# EIGVECS_FILE = 'band.yaml' 
+# BAND_TO_PLOT = 0 

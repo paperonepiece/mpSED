@@ -1,0 +1,126 @@
+#!/home/b1583/soft/miniforge3/bin/python
+# -*- coding:utf-8 -*-
+'''
+Main program for phonon SED calculation
+Zheyi modified several basic functions to improve usablity
+Email: zhangzy3033@163.com
+'''
+## import python modules
+import sys
+import os
+import time
+import h5py
+import numpy as np
+
+## default work path is the current path
+work_path = os.getcwd() 
+root_path = os.path.abspath(__file__)
+
+## add modules path
+module_path = os.path.abspath(__file__) # CHANGE THIS TO YOUR PATH
+
+sys.path.append(work_path)
+sys.path.append(root_path)
+sys.path.append(module_path)
+
+file_name = os.path.basename(root_path)
+default_input_file = 'psed.in'
+
+start_time = time.perf_counter()
+
+def time_count(st_time):
+    return 'Time consumed: {:.2f}s'.format(time.perf_counter()-st_time)
+
+## Get the input file
+if len(sys.argv) == 1:
+    input_file = default_input_file
+elif len(sys.argv) > 2:
+    print('\nPhononSED (pSED) Module:',flush=True)
+    print('\nERROR: {} takes 1 or 0 arguments! '
+          'Try \'python ./{} -help\' for more info.\n'.format(file_name,
+                                                              file_name),
+          flush=True)
+    exit()  
+elif len(sys.argv) == 2 and (sys.argv[1].lower() == '-h' or '-help' in sys.argv[1].lower()):
+    print('\nPhononSED (pSED) Module:',flush=True)
+    print("\n  USAGE: python ./{} input_file\n\n  'input_file' should be the name of the file "
+          "containing the parameters for Phonon Spectral Energy Density Calculation"
+          "\n\n  If input_file name is not provided, the default name would be '{}'\n".format(file_name,
+                                                                                            default_input_file),
+          flush=True)
+    exit()
+else: 
+    input_file = str(sys.argv[1])
+if not os.path.exists(input_file):
+    print("\nERROR: file '{}' not found!\n".format(input_file),
+          flush=True)
+    exit()
+
+## import my psed modules
+from modules import *
+
+## Read the input parameter file
+params = Parsers.parse_input(input_file)
+params.with_eigs = False ### disable the feature that includes eigenvectors!
+params.work_path = work_path
+
+## Compress the velocity and position data to hdf5
+if params.compress != 0:
+    if params.compress not in {1,2}:
+        print('\nERROR: {} parameter out of dimension (0,1,2)\n'.format('COMPRESS'), flush=True)
+        exit()
+    if params.compress == 2:
+        print('\nSeperately compressing pos and vels from two data_files! Not finished yet...\n', flush=True)
+        exit('ALL DONE! {}\n'.format(time_count(start_time)))
+    Compressor.compress(params)
+    print('\nCOMPRESSION DONE! {}\n'.format(time_count(start_time)), flush=True)
+    exit()
+else:
+    if not params.plot_bands and not params.plot_slice and not params.lorentz:
+        # this means user is doing SED calculation
+        if not os.path.exists(os.path.join(work_path, params.database_file)):
+            Compressor.compress(params)
+            print('\nCOMPRESSION DONE! Continue calculation...\n', flush=True)
+    
+## Plot the stuff
+if params.plot_bands or params.plot_slice:
+    data = FileIO.read_previous(params)
+    ploter = Plot.plot(data, params)
+    if params.plot_bands:
+        ploter.plot_bands()
+    if params.plot_slice:
+        ploter.plot_q_slice(params)
+    if not params.lorentz:
+        print('\nALL DONE! {}\n'.format(time_count(start_time)), flush=True)
+        exit()
+
+## Fit to a Lorentz function
+if params.lorentz:
+    # if fit, the q-slice will be plotting as default
+    params.plot_lorentz = True
+    data = FileIO.read_previous(params)
+    fitter = Lorentz.lorentz(data, params)
+    ploter = Plot.plot(data, params)
+    fitter.fit()
+    if not fitter._fit_auto:
+        params.popt = fitter.popt
+        ploter.plot_q_slice(params)
+        FileIO.write_lorentz(fitter, params)
+    print('\nALL DONE! {}\n'.format(time_count(start_time)), flush=True)
+    exit()
+
+## Open the hdf5 database
+params.database = h5py.File(params.database_file,'r')
+
+## Read the PHONOPY and lattice structure data
+eigen_vectors = Parsers.parse_eigen_vecs(params)
+lattice = Lattice.lattice(params,eigen_vectors)
+
+## Compute the SED
+phonons = Phonons.spectral_energy_density(params)
+phonons.compute_sed(params, lattice, eigen_vectors)
+
+## Save the data to output files
+FileIO.write_output(phonons, params, lattice, eigen_vectors)
+
+print('\nALL DONE! {}\n'.format(time_count(start_time)), flush=True)
