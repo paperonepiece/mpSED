@@ -11,7 +11,7 @@ Original SED code is from https://github.com/tyst3273/phonon-sed, Ty Sterling. I
 
     3. Auto-detecting available q-points on q-path from the dimension of unit-cell replication
 
-    4. Allow more steps(data frames) per split than NUM_STEPS/NUM_SPLITS to get finer average 
+    4. Allow more steps (data-frames) per split than NUM_STEPS/NUM_SPLITS to get finer average 
 
     5. Assign cpu cores used for fft calculation to speed up SED further (slightly)
    
