@@ -13,6 +13,3 @@ print('=========================================================================
       ' But the second SED method based on eigenvector is still not available now...\n'+
       '=============================================================================================================',
 flush=True)
-# print(' Welcome to use this module for SED calculation\n\n This pSED module was originally developed by Ty Sterling, University of Colorado Boulder, Dept. of Physics\n',flush=True)
-# print(' Zheyi, from Dalian University of Technology, made a few modifications on it\n\n The other SED method based on eigenvector is not available in this module for now...',flush=True)
-# print('=============================================================================================================',flush=True)
