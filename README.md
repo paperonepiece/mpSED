@@ -21,7 +21,9 @@ The other settings and functions remains nearly the same to Sterling's original 
 
 **Dependence:**
 
-    1. python
+    1. lammps 
+    
+    2. python (no need to link with lammps)
   
     2. numpy (py package)
   
