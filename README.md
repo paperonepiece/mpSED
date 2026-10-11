@@ -46,6 +46,7 @@ The other settings and functions remains nearly the same to Sterling's original 
     4. Modify parameters in 'psed.in' according to your lammps-MD
   
     5. Run 'mpSED' to do SED calculation (Set the plot and lorentz args as 0):
+        
         python mpSED
 
     6. Reset the plot and lorentz args and run again to do postprocessing, e.g., phonon-band plotting or lifetime fitting
