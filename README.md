@@ -17,7 +17,7 @@ Original SED code is from https://github.com/tyst3273/phonon-sed, Ty Sterling. I
 
   6. Assign number of cores used for fft calculation to speed up SED further (slightly)
 
-The other settings and functions almost remains the same to styling's original version
+The other settings and functions almost remains the same to Styling's original version
 
 
 **Usage Instruction:**
