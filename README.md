@@ -16,7 +16,6 @@ Original SED code is from https://github.com/tyst3273/phonon-sed, Ty Sterling. I
   5. Automatic mode for Lorentz fitting, i.e., the generation of phonon lifetime
 
   6. Assign number of cores used for fft calculation to speed up SED further (slightly)
-  7. 
 
 The other settings and functions almost remains the same to styling's original version
 
@@ -37,6 +36,6 @@ The other settings and functions almost remains the same to styling's original v
       python mpSED
 
   6. Reset the plot and lorentz args and run again to do postprocessing, e.g., phonon-band plotting or lifetime fitting
-  7. 
+
 
 ALL DONE! Hope it helps your work and enjoy your SED analyzation ~
